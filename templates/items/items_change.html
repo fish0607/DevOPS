@@ -1,0 +1,125 @@
+{% extends 'base.html'%}
+{% block head %}
+	<div class="main-content">
+		<div class="breadcrumbs" id="breadcrumbs">
+			<ul class="breadcrumb">
+				<li>
+					<i class="icon-home home-icon"></i>
+					<a href="#">应用管理</a>
+				</li>
+				<li class="active">修改应用信息</li>
+			</ul><!-- .breadcrumb -->
+			<div class="nav-search" id="nav-search">
+				<form class="form-search">
+					<span class="input-icon">
+						<input type="text" placeholder="Search ..." class="nav-search-input" id="nav-search-input" autocomplete="off" />
+						<i class="icon-search nav-search-icon"></i>
+					</span>
+				</form>
+			</div><!-- #nav-search -->
+			<br>
+		</div>
+
+		<div class="page-content">
+	    	<div class="row">
+		    	<div class="col-xs-12">
+					<form class="form-horizontal" role="form" action="/items/info/?save={{items.items_id}}" method="post" >
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right">Items Host </label>
+							<div class="col-sm-9">
+			    		    	<input type="text" name="host" value="{{items.host}}" placeholder="{{items.host}}" class="col-xs-10 col-sm-5" />
+							</div>
+				    	</div>
+						<div class="space-4"></div>
+
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right"> Items name </label>
+					   		<div class="col-sm-9">
+					   			<input type="text" name="name" value="{{items.name}}" placeholder="{{items.name}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+						
+						<div class="form-group">
+							<label class="col-sm-3 control-label no-padding-right"> Items service </label>
+							<div class="col-sm-9">
+								<input type="text" name="service" value="{{items.service}}" placeholder="{{items.service}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+              	        <div class="space-4"></div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items path </label>
+							<div class="col-sm-9">
+								<input type="text"  name="path" value="{{items.path}}" placeholder="{{items.path}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items shell </label>
+							<div class="col-sm-9">
+								<input type="text" name="shell" value="{{items.shell}}"  placeholder="{{items.shell}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+					
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items process </label>
+							<div class="col-sm-9">
+								<input type="text" name="process" value="{{items.process}}" placeholder="{{items.process}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+                        
+                        <div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items port </label>
+							<div class="col-sm-9">
+								<input type="text" name="port" value="{{items.port}}" placeholder="{{items.port}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+	
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items status </label>
+							<div class="col-sm-9">
+								<input type="text" name="status" value="{{items.status}}" placeholder="{{items.status}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items group </label>
+							<div class="col-sm-9">
+								<input type="text" name="group" value="{{items.group}}" placeholder="{{items.group}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+						
+						<div class="form-group">
+                            <label class="col-sm-3 control-label no-padding-right"> Items notes </label>
+							<div class="col-sm-9">
+								<input type="text" name="notes" value="{{items.notes}}" placeholder="{{items.notes}}" class="col-xs-10 col-sm-5" />
+							</div>
+						</div>
+						<div class="space-4"></div>
+												
+						<div class="space-4"></div>
+						<div class="clearfix form-actions">
+							<div class="col-md-offset-3 col-md-9">
+								<button class="btn btn-info" type="submit">
+									<i class="icon-ok bigger-110"></i>
+									提交修改
+								</button>
+							</div>
+						</div>
+					</form>
+					{{log}}
+				</div>
+			</div>
+		</div>	
+		
+	
+	</div>
+{% endblock %}
+
