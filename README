@@ -11,7 +11,8 @@ pip install psutil
 
 
 同步数据库
-python manage.py sqlmigrate
+python manage.py makemigrations
+python manage.py migrate
 
 创建用户
 python manage.py createsuperuser
