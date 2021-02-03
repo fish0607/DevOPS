@@ -12,7 +12,7 @@ before_install:
   - sudo mysql -e 'CREATE DATABASE devops;'
 
 install:
-  - pip install -r MySQL-python paramiko psutil Django-1.9
+  - pip install MySQL-python paramiko psutil Django-1.9
 
 script:
   - python manage.py makemigrations
