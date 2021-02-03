@@ -1,3 +1,4 @@
+Django==1.19
 MySQL-python
 paramiko
 psutil
