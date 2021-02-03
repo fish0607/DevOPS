@@ -6,13 +6,13 @@ services:
   - mysql
 
 python:
-  - 3.6
+  - 2.7
 
 before_install:
   - sudo mysql -e 'CREATE DATABASE devops;'
 
 install:
-  - pip install -r requirements.txt
+  - pip install -r MySQL-python paramiko psutil Django-1.9
 
 script:
   - python manage.py makemigrations
