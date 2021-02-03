@@ -2,20 +2,6 @@ sudo: required
 
 language: python
 
-matrix:
-  include:
-    - osx
-      language: generic
-      python: "2.7"
-
-    - linux
-      sudo: required
-      python: "2.7"
-      dist: trusty
-
-    - windows
-      python: "2.7"
-  
 services:
   - mysql
 
