@@ -2,6 +2,11 @@ sudo: required
 
 language: python
 
+os:
+  - osx
+  - linux
+  - windows
+  
 services:
   - mysql
 
