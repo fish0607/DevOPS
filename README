@@ -1,3 +1,5 @@
+[![Build Status](https://travis-ci.com/fish0607/DevOPS.svg?branch=master)](https://travis-ci.com/fish0607/DevOPS)
+
 环境需求
 MySQL-5.6.30
 Python-2.7.11
