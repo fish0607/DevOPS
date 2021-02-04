@@ -2,6 +2,9 @@ sudo: required
 
 language: python
 
+services:
+  - mysql
+  
 jobs:
   include:
     - name: "Python 2.7 on Xenial Linux"
@@ -28,7 +31,7 @@ jobs:
         - choco install python2
         - choco install mysql
         - choco install -y --allow-empty-checksums pip
-        - mysql -e 'CREATE DATABASE devops;'
+        - /c/tools/mysql/current/bin/mysql -e 'CREATE DATABASE devops;'
       env: PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin:$PATH
 
 install:
