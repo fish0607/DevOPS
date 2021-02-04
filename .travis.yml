@@ -1,10 +1,5 @@
-sudo: required
-
 language: python
 
-services:
-  - mysql
-  
 jobs:
   include:
     - name: "Python 2.7 on Xenial Linux"
@@ -21,8 +16,12 @@ jobs:
       before_install:
         - brew install 'mysql@5.7'
         - brew services start 'mysql@5.7'
-        - brew install python
-        - mysql -e 'CREATE DATABASE devops;'
+        - echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> /Users/travis/.bash_profile
+        - export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
+        - export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
+        - brew install 'python@2.7'
+        - source /Users/travis/.bash_profile
+        - mysql -u root -e 'CREATE DATABASE devops;'
 
     - name: "Python 2.7 on Windows"
       os: windows
@@ -31,8 +30,8 @@ jobs:
         - choco install python2
         - choco install mysql
         - choco install -y --allow-empty-checksums pip
-        - /c/tools/mysql/current/bin/mysql -e 'CREATE DATABASE devops;'
-      env: PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin:$PATH
+        - /c/tools/mysql/current/bin/mysql -u root -e 'CREATE DATABASE devops;'
+      env: PATH=/c/Python27/c/Python27/Scripts:$PATH
 
 install:
   - pip install -r requirements.txt
