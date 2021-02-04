@@ -16,6 +16,7 @@ jobs:
       osx_image: xcode11
       language: shell
       before_install:
+        - brew install mysql
         - mysql -e 'CREATE DATABASE devops;'
 
     - name: "Python 2.7 on Windows"
