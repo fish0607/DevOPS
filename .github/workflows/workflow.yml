@@ -6,17 +6,10 @@ on:
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [2.7]
-    services:
-      mysql: 
-        image: mysql
-        ports:
-          - 3306:3306
-    
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -33,7 +26,7 @@ jobs:
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Django Migrations
       run: |
-        #service mysql start
+        sudo service mysql start
         mysql -u root -e 'CREATE DATABASE devops;'
         python manage.py makemigrations
         python manage.py migrate
