@@ -30,7 +30,6 @@ jobs:
         - choco install python2
         - choco install mysql
         - choco install visualstudio2017buildtools
-        - choco install mysql-python
         - choco install -y --allow-empty-checksums pip
         - export PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin/:$PATH
         - /c/tools/mysql/current/bin/mysql -u root -e 'CREATE DATABASE devops;'   
