@@ -15,11 +15,11 @@ jobs:
       language: shell
       before_install:
         - brew install 'mysql@5.7'
-        - brew services start 'mysql@5.7'
         - echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> /Users/travis/.bash_profile
         - export LDFLAGS="-L/usr/local/opt/mysql@5.7/lib"
         - export CPPFLAGS="-I/usr/local/opt/mysql@5.7/include"
         - source /Users/travis/.bash_profile
+        - sudo brew services start 'mysql@5.7'
         - mysql -u root -e 'CREATE DATABASE devops;'
 
     - name: "Python 2.7 on Windows"
@@ -28,10 +28,10 @@ jobs:
       before_install:
         - choco install python2
         - choco install mysql
+        - choco install vcredist2017
         - choco install -y --allow-empty-checksums pip
         - export PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin/:$PATH
-        - /c/tools/mysql/current/bin/mysql -u root -e 'CREATE DATABASE devops;'
-        
+        - /c/tools/mysql/current/bin/mysql -u root -e 'CREATE DATABASE devops;'   
 
 install:
   - pip install -r requirements.txt
