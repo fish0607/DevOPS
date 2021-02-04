@@ -14,7 +14,6 @@ jobs:
       osx_image: xcode11
       language: shell
       before_install:
-        - brew install python
         - brew install 'mysql@5.7'
         - brew services start 'mysql@5.7'
         - echo 'export PATH="/usr/local/opt/mysql@5.7/bin:$PATH"' >> /Users/travis/.bash_profile
@@ -30,8 +29,9 @@ jobs:
         - choco install python2
         - choco install mysql
         - choco install -y --allow-empty-checksums pip
-        - export PATH=/c/Python27/:c/Python27/Scripts:/c/tools/mysql/current/bin/:$PATH
+        - export PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin/:$PATH
         - /c/tools/mysql/current/bin/mysql -u root -e 'CREATE DATABASE devops;'
+        
 
 install:
   - pip install -r requirements.txt
