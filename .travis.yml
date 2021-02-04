@@ -27,7 +27,7 @@ jobs:
       before_install:
         - choco install python2
         - choco install mysql
-        - choco install pip -y
+        - choco install -y pip
         - mysql -e 'CREATE DATABASE devops;'
       env: PATH=/c/Python27/c/Python27/Scripts:$PATH
 
