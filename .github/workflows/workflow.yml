@@ -16,18 +16,18 @@ jobs:
       uses: actions/setup-python@v2
       with:
         python-version: ${{ matrix.python-version }}
-    - name: Install MySQL
-      run: |
-        sudo apt-get install mysql-server
-        sudo apt-get install mysql-client
-        sudo apt-get install libmysqlclient-dev
+    - name: Set up MySQL 5.7
+      uses: mirromutth/mysql-action@master
+      with:
+        mysql version: 5.7
+        mysql database: devops
+        mysql root password: 123456
     - name: pip requirements
       run: |
         if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
     - name: Django Migrations
       run: |
-        sudo service mysql start
-        mysql -u root -e 'CREATE DATABASE devops;'
+        mysql -u root -p123456 -e 'CREATE DATABASE devops;'
         python manage.py makemigrations
         python manage.py migrate
     - name: Run Test
