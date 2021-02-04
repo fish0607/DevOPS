@@ -16,16 +16,16 @@ jobs:
       osx_image: xcode11
       language: shell
       before_install:
-        - brew install mysql@5.8
-        - brew services start mysql
-        - brew install python@2.7
+        - brew install 'mysql@5.7'
+        - brew services start 'mysql@5.7'
+        - brew install 'python@2.7'
         - mysql -e 'CREATE DATABASE devops;'
 
     - name: "Python 2.7 on Windows"
       os: windows
       language: shell
       before_install:
-        - choco install python
+        - choco install python2
         - choco install mysql
         - python -m pip install --upgrade pip
         - mysql -e 'CREATE DATABASE devops;'
