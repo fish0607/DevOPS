@@ -3,27 +3,35 @@ on:
   push:
     branches:
       - master
+
 jobs:
   build:
-    run-on: ubuntu-latest
-  services:
-    - mysql  
+
+    runs-on: ubuntu-latest
+    strategy:
+      matrix:
+        python-version: [2.7]
+
     steps:
-      - name: Checkout master
-        uses: actions/checkout@v2
-        with:
-          ref: master
-      - name: Setup python
-        uses: actions/setup-node@v1
-        with:
-          python-version: "2.7"
-      - name: Install Dependencies
-        run: pip install -r requirements.txt
-      - name: Migrations
-        run: |
-          python manage.py makemigrations
-          python manage.py migrate
-        
-      - name: Run Tests
-        run: |
-          python manage.py test
+    - uses: actions/checkout@v2
+    - name: Set up Python ${{ matrix.python-version }}
+      uses: actions/setup-python@v2
+      with:
+        python-version: ${{ matrix.python-version }}
+    - name: Install dependencies
+      run: |
+        if [ -f requirements.txt ]; then pip install -r requirements.txt; fi
+    - name: Install Mysql
+      run: |
+        apt-get install mysql-server
+        apt-get install mysql-client
+        apt-get install libmysqlclient-dev
+    - name: Django Migrations
+      run: |
+        service mysql start
+        mysql -u root -e 'CREATE DATABASE devops;'
+        python manage.py makemigrations
+        python manage.py migrate
+    - name: Run Test
+      run: |
+        python manage.py test
