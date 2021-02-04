@@ -6,6 +6,7 @@ jobs:
   include:
     - name: "Python 2.7 on Xenial Linux"
       python: 2.7
+      services: mysql
     - name: "Python 2.7 on macOS"
       os: osx
       osx_image: xcode11
@@ -14,15 +15,9 @@ jobs:
       os: windows
       language: shell
       before_install:
-        - choco install python --version 2.7
+        - choco install python --version 2.7.15
         - python -m pip install --upgrade pip
       env: PATH=/c/Python27/c/Python27/Scripts:$PATH
-
-services:
-  - mysql
-
-python:
-  - 2.7
 
 before_install:
   - sudo mysql -e 'CREATE DATABASE devops;'
