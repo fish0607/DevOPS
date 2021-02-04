@@ -19,7 +19,6 @@ jobs:
         - brew install 'mysql@5.7'
         - brew services start 'mysql@5.7'
         - brew install python
-        - brew install pip
         - mysql -e 'CREATE DATABASE devops;'
 
     - name: "Python 2.7 on Windows"
@@ -30,7 +29,7 @@ jobs:
         - choco install mysql
         - choco install -y --allow-empty-checksums pip
         - mysql -e 'CREATE DATABASE devops;'
-      env: PATH=/c/Python27/c/Python27/Scripts:$PATH
+      env: PATH=/c/Python27:/c/Python27/Scripts:/c/tools/mysql/current/bin:$PATH
 
 install:
   - pip install -r requirements.txt
